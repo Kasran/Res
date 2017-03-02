@@ -702,6 +702,10 @@ function returnUntil(ctx, condition) {
   };
 }
 
+// A not-implemented function for atomic-opers that are expected but not
+// implemented.
+function notImplementedOper(ctx) { ctx.complain(this.name, 'not implemented'); }
+
 
 
 //////// [03] BUILT-IN OPERATORS ////////
@@ -1046,7 +1050,8 @@ let operStackPop = atomicOper(function(ctx) {
   ctx.stack.push(resListItem(oldStk));
 }, 'stack-pop');
 
-//// [03.07] I/O. Pretty much just printing for now.
+//// [03.07] I/O. Pretty much just printing for now. Input operators just
+//// complain in this implementation.
 
 // Prints the top item as a Res item, with no prettification.
 // This means a string will just display as a list of characters, not a
@@ -1068,6 +1073,9 @@ let operPrettyPrint = atomicOper(function(ctx) {
   let [item] = opers;
   ctx.logger.printOut(prettyString(item));
 }, 'pretty-print');
+
+let operGetLine = atomicOper(notImplementedOper, 'get-line');
+let operGetChar = atomicOper(notImplementedOper, 'get-char');
 
 //// [03.08] Manipulating namespaces.
 
@@ -1479,10 +1487,12 @@ let nsDefault = resNamespaceItem({
   'D': operDig,
   'E': operExec,
   'F': operLabelExec,
+  'G': operGetLine,
   'P': operPrettyPrint,
   'R': operReturn,
   'S': operStore,
   'T': operType,
+  'g': operGetChar,
   'k': operChr,
   'n': resCharItem('\n'),
   'o': operOrd,
