@@ -1,0 +1,48 @@
+<html>
+<head>
+
+  <title>WOO BOY IT'S RES TIME TIME FOR RES WOO</title>
+  <script type="text/javascript" src="res.js"></script>
+  <script type="text/javascript" src="res-frontend.js"></script>
+  <style>
+    .yeah-its-res {
+      border: 1px solid black;
+      border-radius: 10px;
+      width: 80%;
+      margin: 10px auto;
+      padding: 10px;
+      text-align: center;
+    }
+    #output {
+      display: block;
+      font-family: monospace;
+      text-align: left;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+
+</head>
+<body onload="onLoad();">
+
+  <div class="yeah-its-res">
+    WOO BOY IT'S THE RES DIV<br />
+    THE DIV FOR RES<br />
+    WOOOOO
+  </div>
+
+  <div class="yeah-its-res">
+    <textarea rows="25" cols="80" id="input">"Hello world"P</textarea><br />
+    <button id="run-btn" onclick="onDoRun();">Run</button>
+    <button id="run-btn" onclick="onDoHalt();">Halt</button>
+    <button id="run-btn" onclick="onResetOutput();">Reset Output</button>
+
+    <samp class="yeah-its-res" id="output">
+      ---<br />
+      ---
+    </samp>
+  </div>
+
+</body>
+</html>
