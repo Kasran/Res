@@ -29,16 +29,15 @@
   <div class="yeah-its-res">
     This is a super-basic web interpreter for the <a href="http://kasran.github.io/Res/">Res programming language</a>,
     made using the res.js implementation of Res. It doesn't support any kind of input and is basically only useful
-    for me to test out the program logic. It works, though, so hey!<br /><br />
-
-    The halt button probably doesn't work yet, though. That's... coming soon.
+    for me to test out the program logic. It works, though, so hey!
   </div>
 
   <div class="yeah-its-res">
     <textarea rows="25" cols="80" id="input">"Hello world"P</textarea><br />
     <button id="run-btn" onclick="onDoRun();">Run</button>
     <button id="run-btn" onclick="onDoHalt();">Halt</button>
-    <button id="run-btn" onclick="onResetOutput();">Reset Output</button>
+    <button id="run-btn" onclick="onResetOutput();">Reset Output</button><br />
+    <input id="stackdump" type="checkbox" checked /><label for="stackdump">Show stack dump on error</label>
 
     <samp class="yeah-its-res" id="output">
       ---

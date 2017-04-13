@@ -1,6 +1,7 @@
 var ctx;
 var input;
 var output;
+var stkCheck;
 
 function onResetOutput(val = "---") {
   output.innerHTML = val;
@@ -13,6 +14,7 @@ function sanitize(str) {
 function onLoad() {
   input = document.getElementById("input")
   output = document.getElementById("output");
+  stkCheck = document.getElementById("stackdump");
 
   let log = new ResLogger(
     function(obj) {
@@ -25,6 +27,11 @@ function onLoad() {
       str = str.replace(/\n/g, "<br />");
       str = '<span class="error">' + str + '</span>';
       output.innerHTML += str;
+      if (stkCheck.checked) {
+        let stackdump = sanitize(ctx.displayStack());
+        stackdump = stackdump.replace(/\n/g, "\\n");
+        output.innerHTML += "<br />" + stackdump;
+      }
     }
   );
 

@@ -566,14 +566,15 @@ function ResContext(prgmText, namespace, logger = defaultLogger) {
   // to place a call to run the next set, in order to keep the Javascript
   // runtime from hanging on this function. Useful for web interpreters, I
   // think.
-  this.run = function(ctx, numSteps = null) {
+  this.run = function(numSteps = null) {
     let runSteps = function(ctx, n) {
       let steps = (n == null ? Infinity : n);
       for (let i = 0; i < steps; i++)
         if (ctx.step()) return;
       if (n !== null) {
-        console.log("setting interval");
-        setInterval(20, runSteps, n);
+        let boundF = runSteps.bind(this, ctx, n);
+        //setInterval(20, runSteps, n);
+        requestAnimationFrame(boundF);
       }
     };
     this.reset();
